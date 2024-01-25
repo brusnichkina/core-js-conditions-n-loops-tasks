@@ -21,8 +21,11 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  if (number >= 0) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -38,8 +41,22 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  let x;
+  if (a > b) {
+    if (a > c) {
+      x = a;
+    } else {
+      x = c;
+    }
+  } else if (a > c) {
+    x = c;
+  } else if (b > c) {
+    x = b;
+  } else {
+    x = c;
+  }
+  return x;
 }
 
 /**
@@ -82,8 +99,15 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a === 0 || b === 0 || c === 0) return false;
+  if (a === b || a === c || b === c) {
+    if (a > b + c || b > a + c || c > a + b) {
+      return false;
+    }
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -100,8 +124,30 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let result = '';
+  const romanNumerals = [
+    '',
+    'I',
+    'II',
+    'III',
+    'IV',
+    'V',
+    'VI',
+    'VII',
+    'VIII',
+    'IX',
+    'X',
+  ];
+  const decimals = ['', 'X', 'XX', 'XXX', 'XXXX'];
+  if (num <= 10) {
+    result = romanNumerals[num];
+  }
+  const decNum = Math.floor(num / 10);
+  if (decNum > 0) {
+    result = decimals[decNum] + romanNumerals[num % 10];
+  }
+  return result;
 }
 
 /**
